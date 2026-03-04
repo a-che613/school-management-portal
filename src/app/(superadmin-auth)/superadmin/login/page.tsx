@@ -59,7 +59,7 @@ export default function SuperAdminLoginPage() {
         await setAuthToken(userData);
         
         // Redirect to Super Admin dashboard
-        router.push('/super-admin');
+        router.push('/superadmin');
       }
     } catch (err: any) {
       console.error('Login error:', err);

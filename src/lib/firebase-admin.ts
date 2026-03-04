@@ -1,2 +1,21 @@
-// This file has been removed - Firebase Admin is no longer used
-// All authentication now uses react-firebase-hooks and JWT tokens
+import admin from 'firebase-admin';
+import { getApps } from 'firebase-admin/app';
+
+// Check if Firebase Admin is already initialized
+if (!getApps().length) {
+  try {
+    // Initialize Firebase Admin SDK
+    admin.initializeApp({
+      credential: admin.credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      }),
+    });
+  } catch (error) {
+    console.error('Firebase Admin initialization error:', error);
+  }
+}
+
+export const auth = admin.auth();
+export const db = admin.firestore();

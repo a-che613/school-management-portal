@@ -17,10 +17,9 @@ import {
 } from 'lucide-react';
 
 const navigation = [
-  { name: 'Dashboard', href: '/super-admin', icon: LayoutDashboard },
-  { name: 'Schools', href: '/super-admin', icon: School },
-  { name: 'Users', href: '/super-admin/users', icon: Users },
-  { name: 'Settings', href: '/super-admin/settings', icon: Settings },
+  { name: 'Dashboard', href: '/superadmin', icon: LayoutDashboard },
+  { name: 'Users', href: '/superadmin/users', icon: Users },
+  { name: 'Settings', href: '/superadmin/settings', icon: Settings },
 ];
 
 export default function SuperAdminLayout({
@@ -34,7 +33,7 @@ export default function SuperAdminLayout({
 
   const handleLogout = () => {
     logout();
-    window.location.href = '/super-admin/login';
+    window.location.href = '/superadmin/login';
   };
 
   return (

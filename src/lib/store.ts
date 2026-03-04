@@ -58,7 +58,8 @@ export const useAuthStore = create<AuthState>()(
           .sign(JWT_SECRET);
         
         // Set token in cookie
-        document.cookie = `auth-token=${token}; path=/; max-age=${7 * 24 * 60 * 60}; secure; samesite=strict`;
+        const isSecure = process.env.NODE_ENV === 'production';
+        document.cookie = `auth-token=${token}; path=/; max-age=${7 * 24 * 60 * 60}; ${isSecure ? 'secure;' : ''} samesite=strict`;
         
         // Set user in store
         set({ 
